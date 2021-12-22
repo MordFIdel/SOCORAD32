@@ -20,6 +20,8 @@ Frequency Range 400mhz -470mhz covers most countries allocated walkie talkie fre
 <br/> Sleep Mode (0.1uA)
 <br/><br/>To talk to the module, a generic blueooth serial communication APP is used on phone to connect to the ESP32 module which in turn communicate with the module via UART. Due to the SOCORAD32 rich features, it can be used for the following applications.
 
+<br/>The device contains a dedicated PTT button and extra   vvvvvvvvvvvvvvvvvvv buttons for users configurations.
+
 # Applications
 walkie talkie
 <br/>Intercom
