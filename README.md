@@ -6,7 +6,7 @@ as in Baofeng and Hytera.
 <br/>The ESP32 talks to the central module using simple AT commands. The specifications are listed below
 
 # Specifiications
-<br/>Frequency Range 400mhz -470mhz covers most countries allocated walkie talkie frequencies, escpecilly the license free ones.
+Frequency Range 400mhz -470mhz covers most countries allocated walkie talkie frequencies, escpecilly the license free ones.
 <br/> Frequency Step: 5K/6.25K/12.5K/25K
 <br/> RF Output Power: 2W/1W/0.5W
 <br/> Voice encryption (scrambling): 8 type
@@ -18,3 +18,11 @@ as in Baofeng and Hytera.
 <br/> SQ level adjustable (0-9)
 <br/> MIC sensitivity level adjustable (1-8)
 <br/> Sleep Mode (0.1uA)
+<br/><br/>To talk to the module, a generic blueooth serial communication APP is used on phone to connect to the ESP32 module which in turn communicate with the module via UART. Due to the SOCORAD32 rich features, it can be used for the following applications.
+
+# Applications
+walkie talkie
+<br/>Intercom
+<br/>Pager
+<br/>IoT (data transmission module)
+<br/><br/>The AT commands are in the repository. It includes commands for volume control, power output, transmit/recieve frequency, Voice Ativated Exhange, squelching, etc
