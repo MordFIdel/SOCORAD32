@@ -1,0 +1,2 @@
+# SOCORAD32
+ESP32 SOftware COntrolled RADio (SOCORAD32)
