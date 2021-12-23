@@ -19,8 +19,7 @@ Frequency Range 400mhz -470mhz covers most countries allocated walkie talkie fre
 <br/> MIC sensitivity level adjustable (1-8)
 <br/> Sleep Mode (0.1uA)
 <br/><br/>To talk to the module, a generic blueooth serial communication APP is used on phone to connect to the ESP32 module which in turn communicate with the module via UART. Due to the SOCORAD32 rich features, it can be used for the following applications.
-
-<br/>The device contains a dedicated PTT button and extra   vvvvvvvvvvvvvvvvvvv buttons for users configurations.
+<br/>![20211223_115709](https://user-images.githubusercontent.com/88499684/147236972-0cf456d9-e1e3-430d-9c5c-fa2d9e848e35.jpg)![20211223_120815](https://user-images.githubusercontent.com/88499684/147237009-5a7c7173-68a2-4263-8a53-7467b1347df0.jpg)
 
 # Applications
 walkie talkie
@@ -28,3 +27,4 @@ walkie talkie
 <br/>Pager
 <br/>IoT (data transmission module)
 <br/><br/>The AT commands are in the repository. It includes commands for volume control, power output, transmit/recieve frequency, Voice Ativated Exhange, squelching, etc
+<br/>The device contains a dedicated PTT button and extra buttons for users configurations.
