@@ -1,5 +1,5 @@
 # SOCORAD32 - ESP32 SOftware COntrolled RADio
-<br />This device contains all you need to build a fully functional walkie talkie. It shares the same properties as the commercial one. Here it is used both for voice and data communication. Because it can communicate data, we can explore the amateur radio frequency for IoT.
+<br />Add a speaker and a power supply, then you'll have a fully functional walkie talkie. It shares the same properties as the commercial one. Can be used both for voice and data communication. Because it can communicate data, we can explore the amateur radio frequency for IoT.
 <br />The central module contains the special purpose RDA1846 IC. This same IC is used in commercial walkie talkies such<br/>
 as in Baofeng and Hytera.
 <br />Other of its peripherals are an onboard ESP32 for paramter settings (via bluetooth or WiFi), control and storage. 
