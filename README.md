@@ -1,4 +1,5 @@
 # SOCORAD32 - ESP32 SOftware COntrolled RADio
+<br /> Hardware files including 3D will be released soon
 <br />Add a speaker and a battery, then you'll have a fully functional walkie talkie Radio. It shares the same properties as the commercial one. Can be used both for voice and data communication. Because it can communicate data, we can explore the amateur radio frequency for IoT.
 <br/>Beyond communication, it is fully open source and hackable!
 <br />The central module contains the special purposE RDA1846 IC. This same IC is used in commercial walkie talkies such<br/>
