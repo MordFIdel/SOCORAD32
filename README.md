@@ -34,5 +34,5 @@ Walkie Talkie
 <br/><br/>The AT commands are in the repository. It includes commands for volume control, power output, RX/TX frequencies, voice activated exhange, squelching, etc.
 <br/>The device contains a dedicated PTT button and extra buttons for user configurations.
 
-<br/>![20211223_115709](https://user-images.githubusercontent.com/88499684/147236972-0cf456d9-e1e3-430d-9c5c-fa2d9e848e35.jpg)![20211223_120815](https://user-images.githubusercontent.com/88499684/147237009-5a7c7173-68a2-4263-8a53-7467b1347df0.jpg)
+<br/>![SOCORAD32 high rez](https://user-images.githubusercontent.com/88499684/215540777-c825e2d2-a014-41b9-847e-6e92eacf6c23.png)
 
