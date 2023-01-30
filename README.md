@@ -1,5 +1,6 @@
 # SOCORAD32 - ESP32 SOftware COntrolled RADio
-<br/> https://www.crowdsupply.com/mord-technologies/socorad32
+<br/> please visit https://www.crowdsupply.com/mord-technologies/socorad32
+
 <br/> (Hardware files including 3D enclosure will be released soon)
 <br/>
 <br />Add a speaker and a battery, then you'll have a fully functional walkie talkie Radio. It shares the same properties as the commercial one. Can be used both for voice and data communication. Because it can communicate data, we can explore the amateur radio frequency for IoT.
