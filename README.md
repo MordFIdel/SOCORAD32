@@ -1,5 +1,4 @@
 # SOCORAD32 - ESP32 SOftware COntrolled RADio
-<br/> please visit https://www.crowdsupply.com/mord-technologies/socorad32
 
 <br/> (3D enclosure design already released)
 <br/>
