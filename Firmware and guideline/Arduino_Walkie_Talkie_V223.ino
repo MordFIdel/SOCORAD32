@@ -1363,7 +1363,7 @@ void settingScreen(){  //init for the OLED display of setting mode
   oled.println(F("var Bluetooth or USB"));
   oled.println(F("to your computer."));
   oled.println(F(" "));
-  oled.println(F("> waitting..."));
+  oled.println(F("> waiting..."));
 }
 
 void messageScreen(){  //init for the OLED display of short message mode
