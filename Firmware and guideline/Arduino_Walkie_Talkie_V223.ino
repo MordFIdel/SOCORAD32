@@ -86,13 +86,13 @@ bool scanning = false;            //scanning right now
 bool scanLock = false;            //the lock of the toggled scan button (the center press button on your rotary senser)
 byte oldSQL = 1;                  //remember the last SQ setting before squelch key pressed
 byte currentMode = 1;             //cycle switching: 1 = normal receiving; 2 = USB/bluetooth setting; 3 = short message; 4 = direct control
-byte volumn = 128;                //the audio volumn (0-255), set to middle at beginning
+byte volume = 128;                //the audio volume (0-255), set to middle at beginning
 unsigned long debounce = 0;       //debounce button use
 unsigned int batwait = 0;         //we only check battery voltage once every 1000 loop calls on volume changing mode
 const byte maxCH = 40;            //total channels, safe for 40 in total, channel 0 was reserved for further use (direct remote)
 const byte sizeCH = 24;           //24 bytes will be used for each channel in EEPROM
 const byte settingAddress = 247;  //address = 992, save all other user settings, must*4 at all time
-const byte lastVolumn = 255;      //address = 1020, save the last audio volume setting, must*4 at all time
+const byte lastVolume = 255;      //address = 1020, save the last audio volume setting, must*4 at all time
 const byte lastCH = 256;          //address = 1024, position to save the last channel, must*4 at all time
 const long bounce = 100;          //100 ms for debounce
 const long scanTimer = 5000;      //listen 5s before jumping to the next single channel
@@ -585,16 +585,16 @@ void receivingSerialData() {  //we are receiving user settings from serial port 
         oled.println(F(">"));
         break;
 
-      case 72:  //H: //change the volumn instantly
+      case 72:  //H: //change the volume instantly
         beep(true); //start the beep
         strtokIndx = strtok(NULL, ",");
         gotIt = atoi(strtokIndx);          
         if ((gotIt <= 255)&&(gotIt >= 0)){
-          volumn = gotIt;
-          MyPot.setWiper(volumn);
-          EEPROM.write(lastVolumn *4, volumn);  //write the volumn to EEPROM
+          volume = gotIt;
+          MyPot.setWiper(volume);
+          EEPROM.write(lastVolume *4, volume);  //write the volume to EEPROM
           delay(10);
-          oled.print(F("> Volumn (H) = "));
+          oled.print(F("> Volume (H) = "));
           oled.println(gotIt);
         }else{
           oled.println(F("> H error (8-246)")); 
@@ -940,24 +940,24 @@ void positionCheck() {    //switching position of rotary encoder
     //got the current position
     nowP = p2;
     
-    if (modeLock == true) {  //we are to deal with the volumn changing now
+    if (modeLock == true) {  //we are to deal with the volume changing now
       oled.set2X();
       oled.home(); 
       oled.setCursor(0,5);
       oled.println(F("            "));
       oled.setCursor(0,5);
       if (goingUP) {
-        if (volumn >= 246) {volumn = 246;}
-        volumn = volumn + 8;
-        MyPot.setWiper(volumn);
+        if (volume >= 246) {volume = 246;}
+        volume = volume + 8;
+        MyPot.setWiper(volume);
         oled.print(F("  >>> "));
-        oled.println(volumn/8);        
+        oled.println(volume/8);        
       }else{
-        if (volumn <= 8) {volumn = 8;}
-        volumn = volumn - 8;
-        MyPot.setWiper(volumn);
+        if (volume <= 8) {volume = 8;}
+        volume = volume - 8;
+        MyPot.setWiper(volume);
         oled.print(F("  "));
-        oled.print(volumn/8);
+        oled.print(volume/8);
         oled.println(F(" <<< "));
       }
     }else if (currentMode == 1) displayCurrent();   
@@ -1020,11 +1020,11 @@ void setup()
   //start the potentiometer
   MyPot.begin(10); //CS_PIN
   //read back wiper position from EEPROM
-  volumn = EEPROM.read(lastVolumn * 4);
-  if ((volumn > 254) || (volumn < 0)){
-    volumn = 128;
+  volume = EEPROM.read(lastVolume * 4);
+  if ((volume > 254) || (volume < 0)){
+    volume = 128;
   }
-  MyPot.setWiper(volumn);
+  MyPot.setWiper(volume);
   
   //start soft serial
   rfSerial.begin(9600); 
@@ -1090,7 +1090,7 @@ void loop() {
   //back button can be pressed any mode 
   if ((transmiting == false)&&(squelching == false)) backButton(); 
   
-  //rotary encoder can be detected during normal receiving mode and volumn mode
+  //rotary encoder can be detected during normal receiving mode and volume mode
   if ((currentMode == 1)||(modeLock == true)) 
   {
     if ((scanning == false)&&(CHLock == false)&&(transmiting == false)&&(squelching == false)) { 
@@ -1216,14 +1216,14 @@ void backButton() {
 }
 
 void modeButton() { 
-  unsigned int oldVolumn;
+  unsigned int oldVolume;
   if((digitalRead(6) == LOW)&&(modeLock == false)&&(millis() - debounce > bounce)) { //modePin
     modeLock = true;
     beep(true); //start the beep
     debounce = millis();
 
-    //we are to remember the current volumn to see if we are to change mode or volumn
-    oldVolumn = volumn;
+    //we are to remember the current volume to see if we are to change mode or volume
+    oldVolume = volume;
 
     //try to remember last channel
     if (currentMode == 1) { //write the current chaneal to EEPROM
@@ -1232,7 +1232,7 @@ void modeButton() {
     }
 
     //showup the volume control
-    volumnScreen();
+    volumeScreen();
     beep(false); //stop the beep 
   }
 
@@ -1240,13 +1240,13 @@ void modeButton() {
   if ((modeLock == true)&&(digitalRead(6) == HIGH))   //modePin
   { 
     modeLock = false;
-    if (volumn == oldVolumn) {
-      //switching to the next mode, as we did not change volumn we are to switch mode
+    if (volume == oldVolume) {
+      //switching to the next mode, as we did not change volume we are to switch mode
       currentMode = currentMode + 1;
       if (currentMode > 4) currentMode = 1;
     }else{
-      //we are coming for volumn control. try to remember last volumn write the last volumn to EEPROM
-      EEPROM.write(lastVolumn * 4, volumn); 
+      //we are coming for volume control. try to remember last volume write the last volume to EEPROM
+      EEPROM.write(lastVolume * 4, volume); 
       delay(10);
     }
 
@@ -1337,18 +1337,18 @@ void lockScreen() {
   oled.println(F("---------------------")); 
 }
 
-void volumnScreen() { //displaying volume tip
+void volumeScreen() { //displaying volume tip
   oled.setScrollMode(SCROLL_MODE_OFF); 
   oled.clear();
   oled.set1X();
   oled.setCursor(0,1);
-  oled.println(F(" AUDIO VOLUMN:"));
+  oled.println(F(" AUDIO VOLUME:"));
   oled.println(F(" -------------------"));
   oled.println(F(" 32 steps in total"));
   oled.setCursor(0,5);
   oled.set2X();
   oled.print(F(" >> "));
-  oled.print(volumn / 8); 
+  oled.print(volume / 8); 
   oled.println(F(" <<")); 
 }
 
