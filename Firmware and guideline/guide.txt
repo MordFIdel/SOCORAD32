@@ -1,3 +1,0 @@
-For guides, visit:
-
-https://www.instructables.com/Arduino-Walkie-Talkie/
