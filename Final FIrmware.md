@@ -1,3 +1,6 @@
+This software is written in vs code using the [v4.4.4 ESP-IDF](https://github.com/espressif/idf-installer/releases/download/offline-4.4.4/esp-idf-tools-setup-offline-4.4.4.exe)
+
+
 Once you load this software, you can change the channel and volume with the provided buttons on the PCB. 
 The channels are what is stored in the code. You are free to change the channel anyway you want, 
 just edit the channel storage section in the code. Up to 50 channels or more can be edited to your
