@@ -1,4 +1,4 @@
-Once you load this software, you can change the channel and volume with the provided buttons. 
+Once you load this software, you can change the channel and volume with the provided buttons on the PCB. 
 The channels are what is stored in the code. You are free to change the channel anyway you want, 
 just edit the channel storage section in the code. Up to 50 channels or more can be edited to your
 preference. Also you don't need to connect to Bluetooth device to do this. Press and hold the button to change channel and press once to change volume.
