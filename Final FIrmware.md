@@ -19,12 +19,14 @@ This is same  for editing the ctcss. See screenshots below.
 This software allows simple and less complex use of the SOCORAD32 directly without bluetooth connetion. 
 Other functions provided by the walkie talkie module are accesssible via bluetooth connections to a mobile device.
 The connection process is simple. Using the 'Serial Bluetooth Terminal' android app as example (get from PlayStore), 
-1. Press the Menu button
-2. Select Devices
-3. Select Bluetooth LE
-4. Press and hold the listed BLE device and choose edit.
-5. Choose custom and enter the details as shown in the image below.
+
+1. Firstly, connect the SCRD32 to your phone following your phone standard connection process. Passkey is 123456
+2. Press the Menu button
+3. Select Devices
+4. Select Bluetooth LE
+5. Press and hold the listed BLE device and choose edit.
+6. Choose custom and enter the details as shown in the image below.
 
 ![BLE connect process](https://github.com/MordFIdel/SOCORAD32/assets/88499684/fe236797-c1af-4f8d-872b-68ce362304f2)
 
-6. Save the settings and voila!, your SOCORAD32 is connected. You can now use the AT commands directly.
+7. Save the settings and voila!, your SOCORAD32 is connected. You can now use the AT commands directly.
