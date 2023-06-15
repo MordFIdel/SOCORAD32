@@ -4,7 +4,8 @@ This software is written in vs code using the [v4.4.4 ESP-IDF](https://github.co
 Once you load this software, you can change the channel and volume with the provided buttons on the PCB. 
 The channels are what is stored in the code. You are free to change the channel anyway you want, 
 just edit the channel storage section in the code. Up to 50 channels or more can be edited to your
-preference. Also you don't need to connect to Bluetooth device to do this. Press and hold the button to change channel and press once to change volume.
+preference. 
+To change the channel, Press and hold the button. To change volume, press once to change volume.
 Connecting to your bluetooth phone, you can use the bluetooth serial software to also change channel by sendng AT+DMOCHN=8 (for channel 8)
 AT+DMOCHN=10 (for channel 10).
 
