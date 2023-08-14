@@ -1,3 +1,5 @@
+Remember the changes we promised. It's here. The old software has too much bugs and so we decided to make this new one, using Bluetooth Low Energy. once you receive your unit. Just follow the simple steps below.
+
 This software is written in vs code using the [v4.4.4 ESP-IDF](https://github.com/espressif/idf-installer/releases/download/offline-4.4.4/esp-idf-tools-setup-offline-4.4.4.exe)
 
 
@@ -30,4 +32,4 @@ The connection process is simple. Using the 'Serial Bluetooth Terminal' android 
 
 ![BLE connect process](https://github.com/MordFIdel/SOCORAD32/assets/88499684/fe236797-c1af-4f8d-872b-68ce362304f2)
 
-7. Save the settings and voila!, your SOCORAD32 is connected. You can now use the AT commands directly.
+7. Save the settings and voila!, your SOCORAD32 is connected. You can now use the AT commands directly. Input your commands through the app and view response from the SOCORAD32.
