@@ -33,3 +33,5 @@ The connection process is simple. Using the 'Serial Bluetooth Terminal' android 
 ![BLE connect process](https://github.com/MordFIdel/SOCORAD32/assets/88499684/fe236797-c1af-4f8d-872b-68ce362304f2)
 
 7. Save the settings and voila!, your SOCORAD32 is connected. You can now use the AT commands directly. Input your commands through the app and view response from the SOCORAD32.
+
+Link to FIrmware https://github.com/MordFIdel/SOCORAD32/blob/main/SCRD32%20firmware%20official.zip
