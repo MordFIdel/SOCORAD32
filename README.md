@@ -35,3 +35,5 @@ Walkie Talkie
 
 <br/>![SOCORAD32 high rez](https://user-images.githubusercontent.com/88499684/215540777-c825e2d2-a014-41b9-847e-6e92eacf6c23.png)
 
+## First run / Flashing
+See [Final Firmware](Final_Firmware.md) for instructions
