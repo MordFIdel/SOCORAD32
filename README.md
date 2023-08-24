@@ -13,7 +13,7 @@
 Frequency Range: 400-470mhz covers most countries allocated walkie talkie frequencies, especially the license free ones.
 <br/> Frequency Step: 5K/6.25K/12.5K/25K
 <br/> RF Output Power: 2W/1W/0.5W
-<br/> Voice features, Tone Squelches, SMS capability:
+<br/> Voice features, Tone Squelches, SMS cabapility:
 <br/> Voice encryption (scrambling): 8 types
 <br/> SMS Receive/Transformer, baudrate: 1200
 <br/> CTCSS (38 groups) + CDCSS (83 groups)
@@ -35,3 +35,5 @@ Walkie Talkie
 
 <br/>![SOCORAD32 high rez](https://user-images.githubusercontent.com/88499684/215540777-c825e2d2-a014-41b9-847e-6e92eacf6c23.png)
 
+## First run / Flashing
+See [Final Firmware](Final_Firmware.md) for instructions
