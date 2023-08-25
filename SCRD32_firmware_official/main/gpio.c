@@ -107,7 +107,7 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
     static int cnt = 0;
 
     cnt++;
-    if(cnt > 1200 && cnt < 1500 )
+    if(cnt > 50 && cnt < 500 )
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(PLUS_BTN_PIN) == 0)  //1 -> 0
@@ -130,7 +130,7 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
             gVolumePlusBtnClicked = true;
         }
     }
-    else if(cnt > 2000)
+    else if(cnt > 500)
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(PLUS_BTN_PIN) == 0)
@@ -159,7 +159,7 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
     static int cnt = 0;
 
     cnt++;
-    if(cnt > 1200 && cnt < 1500 )
+    if(cnt > 50 && cnt < 500 )
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(MIN_BTN_PIN) == 0)
@@ -182,7 +182,7 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
             
         }
     }
-    else if(cnt > 2000)
+    else if(cnt > 500)
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(MIN_BTN_PIN) == 0)
