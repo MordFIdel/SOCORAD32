@@ -25,6 +25,7 @@ bool gChannelMinusBtnClicked = false;
 extern uint8_t gVolume;
 extern uint8_t gVox;
 extern uint8_t gChannelNum;
+extern bool menuActive;
 
 void Reset_pin(void)
 {
@@ -117,9 +118,15 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
             cnt = 0;
             plus_btn_timer_disable();
 
-            //volume+ 
-            gVolume++;
-            if(gVolume > 8) gVolume = 8;
+            if(menuActive==true){
+
+            }
+            else{
+                //volume+ 
+                gVolume++;
+                if(gVolume > 8) gVolume = 8;
+                
+            }
             gVolumePlusBtnClicked = true;
         }
     }
@@ -133,10 +140,15 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
         {
             plus_btn_timer_disable();
             cnt = 0;
-            
+
+            menuActive=true;
+
+            /*
             //channel+
             gChannelNum++;
             if(gChannelNum > MAX_CHANNEL_NUM) gChannelNum = MAX_CHANNEL_NUM;
+            */
+
             gChannelPlusBtnClicked = true;
         }
     }
@@ -158,10 +170,16 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
             cnt = 0;
             minus_btn_timer_disable();
 
-            //volume- 
-            gVolume--;
-            if(gVolume > 8) gVolume = 0;
-            gVolumeMinusBtnClicked = true;
+            if(menuActive==true){
+
+            }
+            else{
+                //volume- 
+                gVolume--;
+                if(gVolume > 8) gVolume = 0;
+                gVolumeMinusBtnClicked = true;
+            }
+            
         }
     }
     else if(cnt > 2000)
@@ -174,7 +192,10 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
         {
             minus_btn_timer_disable();
             cnt = 0;
-            
+
+            menuActive=true;
+
+            /*
             //channel-
             if(gChannelNum > 0 && gChannelNum < MAX_CHANNEL_NUM)
             {
@@ -182,6 +203,8 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
                 if(gChannelNum > MAX_CHANNEL_NUM) gChannelNum = 0;
                 gChannelMinusBtnClicked = true;
             }
+            */
+            gChannelMinusBtnClicked = true;
         }
     }
 }
@@ -341,7 +364,7 @@ void gpioTask(void *arg)
     while(1)
     {
         gpio_set_level(LED_RX_PIN, !gpio_get_level(RX_STATE_PIN));
-        gpio_set_level(LED_TX_PIN, !gpio_get_level(TX_STATE_PIN));
+        gpio_set_level(LED_TX_PIN, gpio_get_level(TX_STATE_PIN));
 
         // ESP_LOGI("GPIO", "+ Btn = %d,  - Btn = %d", gpio_get_level(PLUS_BTN_PIN), gpio_get_level(MIN_BTN_PIN));
         vTaskDelay(10/ portTICK_PERIOD_MS);

@@ -15,7 +15,7 @@ bool    gBusyLock	=   false;
 bool	gScreenRefresh = false;
 uint8_t gRxCtcss	=	0;
 uint8_t gTxCtcss	=	0;
-
+bool menuActive = false;
 
 channel_config_t channelInfo[MAX_CHANNEL_NUM] = {
 	//RFV		TFV		  RxCT,TxCT,Vox, BAND,		 PowerLevel
@@ -359,7 +359,7 @@ void setChannelAndVolume()
 {
     char buf[20];
     memset(buf, 0, sizeof(buf));
-    sprintf(buf, "CH:CH%02d, Vol:%01d", gChannelNum, gVolume);
+    sprintf(buf, "CH:CH%02d Vol:%01d", gChannelNum, gVolume);
     ssd1306_clear_line(&dev, 0, 0);
     ssd1306_display_text(&dev, 0, buf, 14, false);
     setVolumeImg();
@@ -370,9 +370,9 @@ void setTxFreqAndPower()
     char buf[20];
     memset(buf, 0, sizeof(buf));
     if(gPowerLevel == HIGH_LEVEL)
-        sprintf(buf, "Tx:%.3fM, P:H", gTFV);
+        sprintf(buf, "Tx:%.5fM H", gTFV);
     else if(gPowerLevel == LOW_LEVEL)
-        sprintf(buf, "Tx:%.3fM, P:L", gTFV);
+        sprintf(buf, "Tx:%.5fM L", gTFV);
     
     ssd1306_clear_line(&dev, 2, 0);
     ssd1306_display_text(&dev, 2, buf, 16, false);
@@ -382,10 +382,10 @@ void setRxFreq()
 {
     char buf[20];
     memset(buf, 0, sizeof(buf));
-    sprintf(buf, "Rx:%.3fM", gRFV);
+    sprintf(buf, "Rx:%.5fM", gRFV);
     
-    ssd1306_clear_line(&dev, 5, 0);
-    ssd1306_display_text(&dev, 5, buf, 16, false);
+    ssd1306_clear_line(&dev, 3, 0);
+    ssd1306_display_text(&dev, 3, buf, 16, false);
 }
 
 void setVoxBandCts()
@@ -403,18 +403,43 @@ void setVoxBandCts()
     ssd1306_display_text(&dev, 7, buf, 16, false);
 }
 
+void showMenu()
+{
+		ssd1306_clear_screen(&dev, false);
+    char buf[20];
+    memset(buf, 0, sizeof(buf));
+    sprintf(buf, "------MENU------");
+    ssd1306_clear_line(&dev, 0, 0);
+    ssd1306_display_text(&dev, 0, buf, 16, false);
+}
+
 void uiTask(void *arg)
 {
     uiInit();
     uiBootScreenLoad(1500);
-	uiMainScreenLoad();
+	//uiMainScreenLoad();
+
+    gScreenRefresh = true;
+
     while(1)
     {
-		if(gScreenRefresh)
-		{
-			uiMainScreenLoad();
-			gScreenRefresh = false;
-		}
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
+    	if(menuActive==true){
+ 		    		//ssd1306_clear_screen(&dev, false);
+ 		    		if(gScreenRefresh)
+ 						{
+ 								showMenu();
+ 		    				gScreenRefresh = false;
+ 		    		}
+ 		    		vTaskDelay(pdMS_TO_TICKS(10));
+ 		    }
+ 		    else{
+ 		    		//uiMainScreenLoad();
+ 						if(gScreenRefresh)
+ 						{
+ 							uiMainScreenLoad();
+ 							gScreenRefresh = false;
+ 						}
+ 				    vTaskDelay(pdMS_TO_TICKS(10));
+ 			  }
+ 		}
 }
