@@ -16,6 +16,7 @@ bool	gScreenRefresh = false;
 uint8_t gRxCtcss	=	0;
 uint8_t gTxCtcss	=	0;
 bool menuActive = false;
+bool chanListActive = false;
 uint8_t menuCurentItem	=	1;
 
 channel_config_t channelInfo[MAX_CHANNEL_NUM] = {
@@ -490,6 +491,17 @@ void showMenu()
 
 }
 
+void showChannels(){
+		gScreenRefresh = true;
+		ssd1306_clear_screen(&dev, false);
+    char buf[20];
+
+		sprintf(buf, "CHANNEL: %d", gChannelNum);
+		ssd1306_clear_line(&dev, 3, 0);
+    ssd1306_display_text(&dev, 3, buf, 16, false);
+    memset(buf, 0, sizeof(buf));
+}
+
 void uiTask(void *arg)
 {
     uiInit();
@@ -505,6 +517,14 @@ void uiTask(void *arg)
  		    		if(gScreenRefresh)
  						{
  								showMenu();
+ 		    				gScreenRefresh = false;
+ 		    		}
+ 		    		vTaskDelay(pdMS_TO_TICKS(10));
+ 		    }
+ 		    else if(chanListActive==true){
+ 		    		if(gScreenRefresh)
+ 						{
+ 								showChannels();
  		    				gScreenRefresh = false;
  		    		}
  		    		vTaskDelay(pdMS_TO_TICKS(10));
