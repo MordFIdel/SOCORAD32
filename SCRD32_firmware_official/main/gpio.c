@@ -132,7 +132,7 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
                 gScreenRefresh = true;
                 //channel+
                 gChannelNum++;
-                if(gChannelNum > MAX_CHANNEL_NUM) gChannelNum = MAX_CHANNEL_NUM;
+                if(gChannelNum > MAX_CHANNEL_NUM) gChannelNum = 0;
                 gChannelPlusBtnClicked = true;
             }
             else{

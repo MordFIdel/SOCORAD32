@@ -73,8 +73,9 @@ channel_config_t channelInfo[MAX_CHANNEL_NUM] = {
 	{450.450,	450.450,	12,	12,	3,	WIDE_BAND,	HIGH_LEVEL},
 };
 
-const uint8_t	gCtcssList[38][2] = {
+const uint8_t	gCtcssList[39][2] = {
   //ToneFrequency H,   L
+  {/*0,*/ 	0xff, 0xff},		//disable CT / DCS
 	{/*1,*/ 	0x70, 0x06},		//67.0Hz 0670  -> 0x70 0x06
 	{/*2,*/ 	0x19, 0x07},		//71.9Hz 0719  -> 0x19 0x07
 	{/*3,*/ 	0x44, 0x07},		//74.4Hz 0744  -> 0x44 0x07
@@ -290,7 +291,7 @@ static void uiInit(void)
 
 static float getToneFreq(uint8_t ctcss_code)
 {
-	if (ctcss_code > 0 && ctcss_code <= 38)
+	if (ctcss_code >= 0 && ctcss_code <= 39)
 		return tone_freq[ctcss_code-1];
 	else
 		return 0;
@@ -361,7 +362,7 @@ void setChannelAndVolume()
 {
     char buf[20];
     memset(buf, 0, sizeof(buf));
-    sprintf(buf, "CH:CH%02d Vol:%01d", gChannelNum, gVolume);
+    sprintf(buf, "CH:CH%02d Vol:%01d", gChannelNum+1, gVolume);
     ssd1306_clear_line(&dev, 0, 0);
     ssd1306_display_text(&dev, 0, buf, 14, false);
     setVolumeImg();
@@ -496,7 +497,7 @@ void showChannels(){
 		ssd1306_clear_screen(&dev, false);
     char buf[20];
 
-		sprintf(buf, "CHANNEL: %d", gChannelNum);
+		sprintf(buf, "CHANNEL: %d", gChannelNum+1);
 		ssd1306_clear_line(&dev, 3, 0);
     ssd1306_display_text(&dev, 3, buf, 16, false);
     memset(buf, 0, sizeof(buf));
