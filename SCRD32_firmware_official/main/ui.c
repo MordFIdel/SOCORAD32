@@ -292,7 +292,7 @@ static void uiInit(void)
 static float getToneFreq(uint8_t ctcss_code)
 {
 	if (ctcss_code >= 0 && ctcss_code <= 39)
-		return tone_freq[ctcss_code-1];
+		return tone_freq[ctcss_code];
 	else
 		return 0;
 }
