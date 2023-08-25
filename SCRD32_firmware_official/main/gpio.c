@@ -26,6 +26,8 @@ extern uint8_t gVolume;
 extern uint8_t gVox;
 extern uint8_t gChannelNum;
 extern bool menuActive;
+extern uint8_t menuCurentItem;
+extern bool    gScreenRefresh;
 
 void Reset_pin(void)
 {
@@ -107,7 +109,7 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
     static int cnt = 0;
 
     cnt++;
-    if(cnt > 50 && cnt < 500 )
+    if(cnt > 50 && cnt < 250 )
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(PLUS_BTN_PIN) == 0)  //1 -> 0
@@ -119,18 +121,20 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
             plus_btn_timer_disable();
 
             if(menuActive==true){
-
+                if(menuCurentItem==3){menuCurentItem=1;}
+                else{menuCurentItem++;};
+                gScreenRefresh = true;
             }
             else{
                 //volume+ 
                 gVolume++;
                 if(gVolume > 8) gVolume = 8;
-                
+                gVolumePlusBtnClicked = true;
             }
-            gVolumePlusBtnClicked = true;
+            
         }
     }
-    else if(cnt > 500)
+    else if(cnt > 250)
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(PLUS_BTN_PIN) == 0)
@@ -141,15 +145,15 @@ static void IRAM_ATTR plusBtnTimerHandler(void *args)
             plus_btn_timer_disable();
             cnt = 0;
 
-            menuActive=true;
+            if(menuActive==false){menuActive=true;menuCurentItem=1;gScreenRefresh=true;}
+            if(menuActive==true && menuCurentItem==2){menuActive=false;gScreenRefresh=true;}
 
             /*
             //channel+
             gChannelNum++;
             if(gChannelNum > MAX_CHANNEL_NUM) gChannelNum = MAX_CHANNEL_NUM;
-            */
-
             gChannelPlusBtnClicked = true;
+            */
         }
     }
 }
@@ -159,7 +163,7 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
     static int cnt = 0;
 
     cnt++;
-    if(cnt > 50 && cnt < 500 )
+    if(cnt > 50 && cnt < 250 )
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(MIN_BTN_PIN) == 0)
@@ -171,18 +175,21 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
             minus_btn_timer_disable();
 
             if(menuActive==true){
-
+                if(menuCurentItem==1){menuCurentItem=3;}
+                else{menuCurentItem--;}
+                gScreenRefresh = true;
             }
             else{
                 //volume- 
                 gVolume--;
                 if(gVolume > 8) gVolume = 0;
-                gVolumeMinusBtnClicked = true;
+                gVolumeMinusBtnClicked = true; 
             }
+            
             
         }
     }
-    else if(cnt > 500)
+    else if(cnt > 250)
     {
     #ifdef BUTTON_STATE_NORMAL_OFF
         if (gpio_get_level(MIN_BTN_PIN) == 0)
@@ -193,7 +200,8 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
             minus_btn_timer_disable();
             cnt = 0;
 
-            menuActive=true;
+            if(menuActive==false){menuActive=true;menuCurentItem=1;gScreenRefresh=true;}
+            if(menuActive==true && menuCurentItem==2){menuActive=false; gScreenRefresh=true;}
 
             /*
             //channel-
@@ -204,7 +212,7 @@ static void IRAM_ATTR minusBtnTimerHandler(void *args)
                 gChannelMinusBtnClicked = true;
             }
             */
-            gChannelMinusBtnClicked = true;
+            //gChannelMinusBtnClicked = true;
         }
     }
 }
