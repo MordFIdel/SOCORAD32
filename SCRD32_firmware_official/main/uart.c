@@ -93,19 +93,21 @@ void uartChannelSetting()
 
     if(uartTxBuf[30] == 'R' && uartTxBuf[31] == 'C')
     {
+    /*
         if(gRxCtcss == 0) gRxCtcss = 1;
         else if(gRxCtcss > 38) gRxCtcss = 38;
 
         if(gTxCtcss == 0) gTxCtcss = 1;
         else if(gTxCtcss > 38) gTxCtcss = 38;
+    */
          
-        uartTxBuf[30] = gCtcssList[gRxCtcss-1][0];
-        uartTxBuf[31] = gCtcssList[gRxCtcss-1][1];
+        uartTxBuf[30] = gCtcssList[gRxCtcss][0];
+        uartTxBuf[31] = gCtcssList[gRxCtcss][1];
     }
     if(uartTxBuf[33] == 'T' && uartTxBuf[34] == 'C')
     {
-        uartTxBuf[33] = gCtcssList[gTxCtcss-1][0];
-        uartTxBuf[34] = gCtcssList[gTxCtcss-1][1];
+        uartTxBuf[33] = gCtcssList[gTxCtcss][0];
+        uartTxBuf[34] = gCtcssList[gTxCtcss][1];
     }
     if(uartTxBuf[36] == 'B')
     {
