@@ -61,22 +61,27 @@ The firmware should now be loaded on the radio.
 
 Useful but optionnal dependancy: ccache
 
-# Install esp-idf
+### Install esp-idf
+```
 mkdir -p ~/esp
 cd ~/esp
 git clone --recursive --branch v4.4.4 https://github.com/espressif/esp-idf.git
 cd ~/esp/esp-idf
 ./install.sh esp32
+```
 
-# Clone repo
+### Clone repo
+```
 cd ~/
 git clone https://github.com/joyel24/SOCORAD32.git
-
-# Build & Flash
+```
+### Build & Flash
+```
 cd ~/SOCORAD32/SCRD32_firmware_official/
 . $HOME/esp/esp-idf/export.sh (Run it everytime before you want to use esp-idf)
 idf.py build
 idf.py flash
+```
 
 You can directly use the esp-idf extension in Visual Code. Take care to utilize the correct version of ESP-IDF.
 
