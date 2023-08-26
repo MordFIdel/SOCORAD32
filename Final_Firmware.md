@@ -73,7 +73,7 @@ cd ~/esp/esp-idf
 ### Clone repo
 ```
 cd ~/
-git clone https://github.com/joyel24/SOCORAD32.git
+git clone https://github.com/MordFIdel/SOCORAD32.git
 ```
 ### Build & Flash
 ```
