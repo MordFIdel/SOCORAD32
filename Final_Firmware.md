@@ -85,4 +85,4 @@ idf.py flash
 
 You can directly use the esp-idf extension in Visual Code. Take care to utilize the correct version of ESP-IDF.
 
-Our you could follow the [guide for installing the tool directly on Linux / Mac](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#)
+Or you could follow the [guide for installing the tool directly on Linux / Mac](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#)
