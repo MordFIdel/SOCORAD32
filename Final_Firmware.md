@@ -59,7 +59,7 @@ The firmware should now be loaded on the radio.
 
 ## Linux / Mac
 
-Useful but optionnal dependancy: ccache
+Useful but optionnal dependency: ccache
 
 ### Install esp-idf
 ```
