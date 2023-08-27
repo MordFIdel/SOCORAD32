@@ -59,6 +59,30 @@ The firmware should now be loaded on the radio.
 
 ## Linux / Mac
 
+Useful but optionnal dependency to speedup building: ccache
+
+### Install esp-idf
+```
+mkdir -p ~/esp
+cd ~/esp
+git clone --recursive --branch v4.4.4 https://github.com/espressif/esp-idf.git
+cd ~/esp/esp-idf
+./install.sh esp32
+```
+
+### Clone repo
+```
+cd ~/
+git clone https://github.com/MordFIdel/SOCORAD32.git
+```
+### Build & Flash
+```
+cd ~/SOCORAD32/SCRD32_firmware_official/
+. $HOME/esp/esp-idf/export.sh (Run it everytime before you want to use esp-idf)
+idf.py build
+idf.py flash
+```
+
 You can directly use the esp-idf extension in Visual Code. Take care to utilize the correct version of ESP-IDF.
 
-Our you could follow the [guide for installing the tool directly on Linux / Mac](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#)
+Or you could follow the [guide for installing the tool directly on Linux / Mac](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#)
