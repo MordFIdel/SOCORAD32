@@ -341,7 +341,7 @@ void gpioTask(void *arg)
     while(1)
     {
         gpio_set_level(LED_RX_PIN, !gpio_get_level(RX_STATE_PIN));
-        gpio_set_level(LED_TX_PIN, !gpio_get_level(TX_STATE_PIN));
+        gpio_set_level(LED_TX_PIN, gpio_get_level(TX_STATE_PIN));
 
         // ESP_LOGI("GPIO", "+ Btn = %d,  - Btn = %d", gpio_get_level(PLUS_BTN_PIN), gpio_get_level(MIN_BTN_PIN));
         vTaskDelay(10/ portTICK_PERIOD_MS);
