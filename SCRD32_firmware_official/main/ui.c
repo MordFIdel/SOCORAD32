@@ -71,8 +71,9 @@ channel_config_t channelInfo[MAX_CHANNEL_NUM] = {
 	{450.450,	450.450,	12,	12,	3,	WIDE_BAND,	HIGH_LEVEL},
 };
 
-const uint8_t	gCtcssList[38][2] = {
-  //ToneFrequency H,   L
+const uint8_t	gCtcssList[39][2] = {
+	//ToneFrequency H,   L
+	{/*0,*/ 	0xff, 0xff},		//Disable tone squelch
 	{/*1,*/ 	0x70, 0x06},		//67.0Hz 0670  -> 0x70 0x06
 	{/*2,*/ 	0x19, 0x07},		//71.9Hz 0719  -> 0x19 0x07
 	{/*3,*/ 	0x44, 0x07},		//74.4Hz 0744  -> 0x44 0x07
@@ -288,10 +289,10 @@ static void uiInit(void)
 
 static float getToneFreq(uint8_t ctcss_code)
 {
-	if (ctcss_code > 0 && ctcss_code <= 38)
-		return tone_freq[ctcss_code-1];
+	if (ctcss_code >= 0 && ctcss_code <= 39)
+		return tone_freq[ctcss_code];
 	else
-		return 0;
+		return 0; //I suggest this return to be other than 0 for later debug.
 }
 
 void getChannelInfo(uint8_t channel)
